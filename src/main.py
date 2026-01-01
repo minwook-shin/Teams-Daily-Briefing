@@ -1,10 +1,7 @@
 import os
-import logging
 
 from services import build_message_body, market, news
 from clients import teams as clients
-
-logger = logging.getLogger(__name__)
 
 
 def run():
@@ -12,7 +9,7 @@ def run():
     tickers = os.getenv("TARGET_STOCKS")
     if not tickers:
         tickers = "^KS11,^KS200"
-        logger.info("No TARGET_STOCKS defined; using defaults: %s", tickers)
+        print("No TARGET_STOCKS defined; using defaults: %s", tickers)
     ticker_list = [t.strip() for t in tickers.split(",") if t.strip()]
 
     market_info = market.get_stock_price(ticker_list)
@@ -28,9 +25,8 @@ def run():
     if webhook:
         clients.send_to_teams(webhook, payload)
     else:
-        logger.info("No webhook configured. Payload:\n%s", payload)
+        print("No webhook configured. Payload:\n%s", payload)
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
     run()
