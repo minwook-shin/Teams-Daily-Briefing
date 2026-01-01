@@ -15,11 +15,11 @@ def build_message_body(market_lines, news_items) -> str:
     """
     lines = []
     if market_lines:
-        lines.append("시장 요약:")
+        lines.append("Market Summary:")
         lines.extend(market_lines)
         lines.append("\n")
     if news_items:
-        lines.append("주요 뉴스:")
+        lines.append("Top News:")
         for n in news_items:
             lines.append(f"- [{n.get('title')}]({n.get('link')})")
     lines.append(f"\n생성 시간: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
