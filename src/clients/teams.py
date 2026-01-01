@@ -4,7 +4,7 @@ import urllib3
 
 logger = logging.getLogger(__name__)
 
-def create_text_payload(text: str, title: str = "Daily Briefing", theme_color: str = "0078D7") -> dict:
+def create_text_payload(text: str, title: str = "Daily Briefing", theme_color: str = "Accent") -> dict:
     """Create a MessageCard payload for Microsoft Teams.
 
     Args:
@@ -20,12 +20,43 @@ def create_text_payload(text: str, title: str = "Daily Briefing", theme_color: s
         "(https://github.com/minwook-shin/Teams-Daily-Briefing)"
         " open-source project and Incoming Webhooks with Workflows for Microsoft Teams service."
     )
+    card_content = {
+        "type": "AdaptiveCard",
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "version": "1.4",
+        "body": [
+            {
+                "type": "TextBlock",
+                "text": title,
+                "size": "Large",
+                "weight": "Bolder",
+                "color": theme_color
+            },
+            {
+                "type": "TextBlock",
+                "text": text,
+                "wrap": True
+            },
+            {
+                "type": "TextBlock",
+                "text": footer,
+                "size": "Small",
+                "isSubtle": True,
+                "wrap": True,
+                "spacing": "Medium"
+            }
+        ]
+    }
+
+    # Webhook으로 보낼 때는 'message' 타입의 attachment로 감싸는 게 정석입니다.
     return {
-        "type": "MessageCard",
-        "@context": "http://schema.org/extensions",
-        "themeColor": theme_color,
-        "title": title,
-        "text": f"{text}{footer}",
+        "type": "message",
+        "attachments": [
+            {
+                "contentType": "application/vnd.microsoft.card.adaptive",
+                "content": card_content
+            }
+        ]
     }
 
 def send_to_teams(webhook_url: str, payload: dict):
@@ -47,5 +78,3 @@ def send_to_teams(webhook_url: str, payload: dict):
     except Exception:
         logger.exception("Failed to send payload to Teams")
         raise
-
-

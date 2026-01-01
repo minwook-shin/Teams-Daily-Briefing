@@ -2,7 +2,7 @@
 
 A serverless Python bot that sends automated stock market briefings (or any custom messages) to a Microsoft Teams channel.
 
-Powered by **GitHub Actions**, it runs on a schedule but **smartly skips weekends and South Korean public holidays**.
+Powered by **GitHub Actions**, it runs on a schedule but **smartly skips weekends**.
 
 > **Note:** This project is designed to be forked and configured without writing any code.
 
