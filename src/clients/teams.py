@@ -1,5 +1,6 @@
+import json
 import logging
-import requests
+import urllib3
 
 logger = logging.getLogger(__name__)
 
@@ -34,17 +35,15 @@ def send_to_teams(webhook_url: str, payload: dict):
         webhook_url: Microsoft Teams incoming webhook URL.
         payload: Dict payload created by `create_text_payload`.
 
-    Returns:
-        The `requests.Response` object.
-
     Raises:
         Any exception is logged and re-raised.
     """
     headers = {"Content-Type": "application/json"}
     try:
-        resp = requests.post(webhook_url, json=payload, headers=headers, timeout=10)
-        resp.raise_for_status()
-        return resp
+        http = urllib3.PoolManager()
+        payload = json.dumps(payload)
+        headers = {"Content-Type": "application/json"}
+        http.request("POST", webhook_url, body=payload, headers=headers)
     except Exception:
         logger.exception("Failed to send payload to Teams")
         raise

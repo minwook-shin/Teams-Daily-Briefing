@@ -116,7 +116,7 @@ Please generate the following files:
    - Define `TEAMS_WEBHOOK_URL` as a secret and `TARGET_STOCKS` as a variable.
 
 5. **`requirements.txt`**
-   - Include `requests`, `yfinance`, `feedparser`, `urllib3`.
+   - Include `yfinance`, `feedparser`, `urllib3`.
 
 # Constraints
 - Keep the code clean and follow PEP8 standards.
