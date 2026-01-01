@@ -21,7 +21,7 @@ def create_text_payload(text: str, title: str = "Daily Briefing", theme_color: s
         " open-source project and Incoming Webhooks with Workflows for Microsoft Teams service."
     )
     return {
-        "@type": "MessageCard",
+        "type": "MessageCard",
         "@context": "http://schema.org/extensions",
         "themeColor": theme_color,
         "title": title,
