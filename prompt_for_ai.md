@@ -20,7 +20,6 @@ Powered by **GitHub Actions**, it runs on a schedule but **smartly skips weekend
 
 * **Serverless:** Runs entirely on GitHub Actions (Free tier friendly).
 * **Smart Scheduling:** Configured to run at **09:30 KST** (UTC 00:30).
-* **Holiday Aware:** Uses `pytimekr` to automatically skip execution on weekends and Korean national holidays.
 * **Secure:** Sensitive Webhook URLs are managed via GitHub Secrets.
 * **Customizable:** Target stock tickers are managed via GitHub Variables.
 
@@ -97,8 +96,8 @@ Please generate the following files:
 
 1. **`src/main.py`** (Entry Point)
    - Load environment variables (`TEAMS_WEBHOOK_URL`, `TARGET_STOCKS`).
-   - Use `pytimekr` to check if today is a South Korean public holiday.
-   - If it is a holiday or weekend, exit successfully without sending a message.
+   - Skip execution on weekends.
+   - If it is a weekend, exit successfully without sending a message.
    - If it is a workday, call modules to fetch data and send the message.
    - Use `logging` instead of `print`.
 
@@ -117,7 +116,7 @@ Please generate the following files:
    - Define `TEAMS_WEBHOOK_URL` as a secret and `TARGET_STOCKS` as a variable.
 
 5. **`requirements.txt`**
-   - Include `requests`, `pytimekr`, `finance-datareader` (or equivalent).
+   - Include `requests`, `yfinance`, `feedparser`, `urllib3`.
 
 # Constraints
 - Keep the code clean and follow PEP8 standards.

@@ -10,7 +10,6 @@ Powered by **GitHub Actions**, it runs on a schedule but **smartly skips weekend
 
 * **Serverless:** Runs entirely on GitHub Actions (Free tier friendly).
 * **Smart Scheduling:** Configured to run at **09:30 KST** (UTC 00:30).
-* **Holiday Aware:** Uses `pytimekr` to automatically skip execution on weekends and Korean national holidays.
 * **Secure:** Sensitive Webhook URLs are managed via GitHub Secrets.
 * **Customizable:** Target stock tickers are managed via GitHub Variables.
 
@@ -68,7 +67,6 @@ You don't have to wait until tomorrow morning to see if it works.
 * The workflow is defined in `.github/workflows/daily_alert.yml`.
 * **Cron Syntax:** `30 0 * * 1-5`
     * This corresponds to **00:30 UTC**, which is **09:30 KST**.
-* **Holiday Logic:** The Python script (`src/main.py`) explicitly checks for Korean holidays using the `pytimekr` library and exits gracefully if it is a holiday.
 
 ## 🤝 Contributing
 Feel free to submit Pull Requests to add new features or improve the message formatting!
