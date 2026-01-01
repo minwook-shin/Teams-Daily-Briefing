@@ -9,6 +9,8 @@ Powered by **GitHub Actions**, it runs on a schedule but **smartly skips weekend
 
 ## ✨ Features
 
+![preview image](./image.png)
+
 * **Serverless:** Runs entirely on GitHub Actions (Free tier friendly).
 * **Smart Scheduling:** Configured to run at **09:30 KST** (UTC 00:30).
 * **Secure:** Sensitive Webhook URLs are managed via GitHub Secrets.
