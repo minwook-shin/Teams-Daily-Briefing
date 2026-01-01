@@ -1,4 +1,5 @@
 # 📈 Teams Daily Briefing
+[![Run Tests](https://github.com/minwook-shin/Teams-Daily-Briefing/actions/workflows/tests.yml/badge.svg?branch=main&event=push)](https://github.com/minwook-shin/Teams-Daily-Briefing/actions/workflows/tests.yml)
 
 A serverless Python bot that sends automated stock market briefings (or any custom messages) to a Microsoft Teams channel.
 
