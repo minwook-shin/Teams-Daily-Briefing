@@ -22,7 +22,7 @@ def build_message_body(market_lines, news_items) -> str:
         lines.append("주요 뉴스:")
         for n in news_items:
             lines.append(f"- [{n.get('title')}]({n.get('link')})")
-    lines.append(f"생성 시간: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    lines.append(f"\n생성 시간: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     return "\n".join(lines)
 
 __all__ = ["get_latest_news", "get_stock_price", "build_message_body"]
