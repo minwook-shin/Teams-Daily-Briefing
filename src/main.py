@@ -6,6 +6,8 @@ from clients import teams as clients
 
 def run():
     webhook = os.getenv("TEAMS_WEBHOOK_URL")
+    if webhook:
+        webhook = webhook.strip()
     tickers = os.getenv("TARGET_STOCKS")
     if not tickers:
         tickers = "^KS11,^KS200"
